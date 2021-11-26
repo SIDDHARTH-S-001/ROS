@@ -1,0 +1,252 @@
+<?xml version="1.0" ?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find arm_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find arm_description)/urdf/arm.trans" />
+<xacro:include filename="$(find arm_description)/urdf/arm.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.03545361982266208 0.19496756745179364 -0.04918171946780468"/>
+    <mass value="0.5918760559363156"/>
+    <inertia ixx="0.000373" ixy="-0.0" ixz="-0.0" iyy="0.000373" iyz="0.0" izz="0.000736"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="shoulder_v7_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.035453619822686105 0.19470965098903878 -0.029181719467804693"/>
+    <mass value="0.17928408437421925"/>
+    <inertia ixx="7.5e-05" ixy="0.0" ixz="-0.0" iyy="7.4e-05" iyz="-0.0" izz="7.5e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 -0.0 -0.01"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/shoulder_v7_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="plastic_glossy_black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 -0.0 -0.01"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/shoulder_v7_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="elbow_v12_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.03545361982268388 0.1593394922695728 0.04910742277427843"/>
+    <mass value="0.13164405591331413"/>
+    <inertia ixx="0.000355" ixy="-0.0" ixz="0.0" iyy="0.000367" iyz="5e-06" izz="2.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 0.005 -0.0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/elbow_v12_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="polystyrene"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 0.005 -0.0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/elbow_v12_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="stepper_motor_v4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-3.8017731617684403e-07 0.019816612355657404 2.8082839953480487e-07"/>
+    <mass value="0.09175959619142068"/>
+    <inertia ixx="2.5e-05" ixy="0.0" ixz="0.0" iyy="2.4e-05" iyz="-0.0" izz="2.5e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.035454 -0.154968 -0.110818"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/stepper_motor_v4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="plastic_glossy_black"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.035454 -0.154968 -0.110818"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/stepper_motor_v4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="fist_v8_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.09273384075257288 0.12499952606426352 0.1108182778828164"/>
+    <mass value="0.10436047216159268"/>
+    <inertia ixx="7e-06" ixy="0.0" ixz="-0.0" iyy="0.000328" iyz="-0.0" izz="0.000327"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.02 -0.01 -0.0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/fist_v8_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="plastic_glossy_white"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.02 -0.01 -0.0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/fist_v8_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_claw_v2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.024827543222019743 4.5557702362822305e-05 2.8053219550128183e-07"/>
+    <mass value="0.17536153168700247"/>
+    <inertia ixx="1.6e-05" ixy="-0.0" ixz="0.0" iyy="4.9e-05" iyz="-0.0" izz="3.9e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.255454 -0.112468 -0.110818"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/left_claw_v2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.255454 -0.112468 -0.110818"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/left_claw_v2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_claw_v2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.024827543222019854 -4.64227987756749e-05 2.8053219545964847e-07"/>
+    <mass value="0.17536153168700244"/>
+    <inertia ixx="1.6e-05" ixy="0.0" ixz="0.0" iyy="4.9e-05" iyz="0.0" izz="3.9e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.255454 -0.157468 -0.110818"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/right_claw_v2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.255454 -0.157468 -0.110818"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/right_claw_v2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="dc_motor_v3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.012499619822683994 -4.3254820641935865e-07 2.8053219558454856e-07"/>
+    <mass value="0.09633399347921827"/>
+    <inertia ixx="8e-06" ixy="0.0" ixz="0.0" iyy="9e-06" iyz="0.0" izz="9e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.210454 -0.134968 -0.110818"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/dc_motor_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="steel_satin"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.210454 -0.134968 -0.110818"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/dc_motor_v3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="eef_v4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.045533767420098514 0.12496756745179359 0.11081828053219558"/>
+    <mass value="0.03189621893711599"/>
+    <inertia ixx="1.2e-05" ixy="0.0" ixz="0.0" iyy="3e-06" iyz="0.0" izz="1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.2 -0.01 -0.0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/eef_v4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="surface_matte"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.2 -0.01 -0.0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/eef_v4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.01"/>
+  <parent link="base_link"/>
+  <child link="shoulder_v7_1"/>
+  <axis xyz="0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Rev2" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.005 -0.01"/>
+  <parent link="shoulder_v7_1"/>
+  <child link="elbow_v12_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Rigid3" type="fixed">
+  <origin rpy="0 0 0" xyz="0.035454 0.159968 0.110818"/>
+  <parent link="elbow_v12_1"/>
+  <child link="stepper_motor_v4_1"/>
+</joint>
+
+<joint name="Rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.015454 -0.144968 -0.110818"/>
+  <parent link="stepper_motor_v4_1"/>
+  <child link="fist_v8_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="Slider6" type="prismatic">
+  <origin rpy="0 0 0" xyz="0.055454 0.102468 0.110818"/>
+  <parent link="eef_v4_1"/>
+  <child link="left_claw_v2_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+  <limit effort="100" lower="0.0" upper="0.0" velocity="100"/>
+</joint>
+
+<joint name="Slider7" type="prismatic">
+  <origin rpy="0 0 0" xyz="0.055454 0.147468 0.110818"/>
+  <parent link="eef_v4_1"/>
+  <child link="right_claw_v2_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+  <limit effort="100" lower="0.0" upper="0.0" velocity="100"/>
+</joint>
+
+<joint name="Rigid8" type="fixed">
+  <origin rpy="0 0 0" xyz="0.190454 0.124968 0.110818"/>
+  <parent link="fist_v8_1"/>
+  <child link="dc_motor_v3_1"/>
+</joint>
+
+<joint name="Rev9" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.010454 -0.124968 -0.110818"/>
+  <parent link="dc_motor_v3_1"/>
+  <child link="eef_v4_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+</robot>
